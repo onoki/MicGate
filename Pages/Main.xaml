@@ -10,7 +10,7 @@
         ShowMaxRestoreButton="False"
         ResizeMode="NoResize"
         Closing="Window_Closing"
-        Icon="/Images/micgate_icon.ico"
+        Icon="/micgate_icon.ico"
         Title="MicGate" Height="400" Width="400">
         
     <Controls:MetroWindow.RightWindowCommands>
@@ -25,7 +25,7 @@
         <Frame Name="PageNavigator" NavigationUIVisibility="Hidden" />
 
         <!-- tray icon, not visible in the regular UI  -->
-        <tb:TaskbarIcon Name="TrayIcon" ToolTipText="MicGate" IconSource="/Images/micgate_icon.ico" TrayMouseDoubleClick="TrayIconOpen_Click">
+        <tb:TaskbarIcon Name="TrayIcon" ToolTipText="MicGate" IconSource="/micgate_icon.ico" TrayMouseDoubleClick="TrayIconOpen_Click">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu Padding="10 5 10 5">
                     <MenuItem Header="Open" Click="TrayIconOpen_Click">
