@@ -4,21 +4,23 @@ MicGate is a digital noise gate (https://en.wikipedia.org/wiki/Noise_gate) to yo
 
 ## How does it work?
 
-Usually audio goes from microphone to the software reading it and then to the speakers. MicGate uses a virtual microphone (installed separately) to modify the audio before it gets passed to the software reading it. See picture below.
+Usually audio goes from microphone to the software reading it and then to the speakers. MicGate uses a virtual microphone (see installation instructions below) to modify the audio before it gets passed to the software reading it. See flow chart below.
 
 ![Audio flow](/Images/readme_audio_flow.png)
 
-The noise gate configuration parameters (threshold, attack, hold, decay) refer to the same things as in the Wikipedia article (https://en.wikipedia.org/wiki/Noise_gate). Except that threshold is not compared against absolute audio volume, but the volume integral over the duration of attack phase (200 ms by default). To make it easier to figure out a correct value for this, the user interface shows what are
+The noise gate configuration parameters (threshold, attack, hold, decay) refer to the same things as in the Wikipedia article (https://en.wikipedia.org/wiki/Noise_gate). Except that threshold is not compared against the absolute audio volume, but the volume integral over the duration of attack phase (200 ms by default). To make it easier to figure out a correct value for this, the user interface shows
 
-1. the integral value
+1. the integral
 2. the threshold
-3. what is passed from the real microphone to the virtual one
+3. the data from the real microphone to the virtual one
 
-The picture below shows the blue line (integral) crossing the red line (threshold), which in effect passes the real microphone input to the virtual output.
+The screenshot below shows the blue line (integral) crossing the red line (threshold), which in effect passes the real microphone input (green, up) to the virtual output (green, down).
 
 ![Treshold passing](/Images/readme_threshold_above.png)
 
-The picture below shows that small noises (e.g. mouse and mechanical keyboard clicks) do not pass the red threshold and thus nothing is passed to the virtual output.
+The screenshot below shows that small noises (e.g. mouse and mechanical keyboard clicks) do not pass the red threshold and thus nothing is passed to the virtual output.
+
+![Treshold passing](/Images/readme_threshold_below.png)
 
 ## How to install and use?
 
@@ -30,4 +32,4 @@ The picture below shows that small noises (e.g. mouse and mechanical keyboard cl
 
 ## Anything else?
 
-I will only implement features I will personally use or fix bugs I can reproduce. But I will gladly accept pull requests if you like to make improvements.
+I will only implement features I will personally use or fix bugs I can reproduce. But I will gladly accept pull requests if you would like to commit improvements.
