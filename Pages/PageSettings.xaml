@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="MicGate.PageSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MicGate"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer>
+        <StackPanel>
+
+            
+            <Border BorderThickness="1" BorderBrush="Black" Margin="10" Padding="10">
+                <StackPanel>
+                    <TextBlock FontSize="16">Device settings</TextBlock>
+
+                    <StackPanel Margin="0 10 0 10">
+                        <TextBlock>Input, real microphone</TextBlock>
+                        <ComboBox Name="SoundInputs" ItemsSource="{Binding DevicesInput}" SelectedItem="{Binding DevicesInputSelection}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0 0 0 10">
+                        <TextBlock>Output, virtual cable to virtual microphone</TextBlock>
+                        <ComboBox Name="SoundOutputs" ItemsSource="{Binding DevicesOutput}" SelectedItem="{Binding DevicesOutputSelection}" />
+                    </StackPanel>
+
+                    <TextBlock TextWrapping="Wrap">If you are confident your input/output devices are OK and you hear nothing, restart the software.</TextBlock>
+                </StackPanel>
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="Black" Margin="10 0 10 10" Padding="10">
+                <StackPanel>
+                    <TextBlock FontSize="16">General settings</TextBlock>
+
+                    <CheckBox Margin="20 10 10 10" IsChecked="{Binding StartWindowMinimized}">Start window minimized</CheckBox>
+
+                    <StackPanel Margin="20 0 10 0" Orientation="Horizontal">
+                        <TextBox Width="50" TextAlignment="Right" Text="{Binding VolumeBoost, StringFormat=N1}" />
+                        <TextBlock VerticalAlignment="Center" Width="20">x</TextBlock>
+                        <TextBlock VerticalAlignment="Center">Volume boost</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="Black" Margin="10 0 10 10" Padding="10">
+                <StackPanel>
+                    <TextBlock FontSize="16">Noise gate settings</TextBlock>
+
+                    <TextBlock Foreground="Black" TextWrapping="Wrap">
+                        See
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://en.wikipedia.org/wiki/Noise_gate">Noise gate in Wikipedia</Hyperlink>
+                        for a detailed description. 
+                        <LineBreak />
+                        Picture by <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://commons.wikimedia.org/wiki/File:Noise_Gate_Attack_Hold_Release.svg">Iainf, public domain</Hyperlink>.
+                    </TextBlock>
+                    
+
+                    <Image Source="/Images/Noise_Gate_Attack_Hold_Release.png" />
+
+                    <StackPanel Margin="20 10 10 10" Orientation="Horizontal">
+                        <TextBox Width="50" TextAlignment="Right" Text="{Binding GateThreshold}" />
+                        <TextBlock VerticalAlignment="Center" Width="20"></TextBlock>
+                        <TextBlock VerticalAlignment="Center">Threshold for activation</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="20 0 10 10" Orientation="Horizontal">
+                        <TextBox Width="50" TextAlignment="Right" Text="{Binding GateAttackDurationMs}" />
+                        <TextBlock VerticalAlignment="Center" Width="20">ms</TextBlock>
+                        <TextBlock VerticalAlignment="Center">Attack length, monitoring duration</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="20 0 10 10" Orientation="Horizontal">
+                        <TextBox Width="50" TextAlignment="Right" Text="{Binding GateHoldDurationMs}" />
+                        <TextBlock VerticalAlignment="Center" Width="20">ms</TextBlock>
+                        <TextBlock VerticalAlignment="Center">Hold length, delay before cutting off input</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="20 0 10 0" Orientation="Horizontal">
+                        <TextBox Width="50" TextAlignment="Right" Text="{Binding GateReleaseDurationMs}" />
+                        <TextBlock VerticalAlignment="Center" Width="20">ms</TextBlock>
+                        <TextBlock VerticalAlignment="Center">Release length, fade out duration</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>
