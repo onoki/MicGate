@@ -17,6 +17,7 @@ namespace MicGate
     {
         private AudioCore audioCore;
         private bool closeInsteadOfMinimize = false;
+        private bool applicationIsStarting = true;
         Mutex singleInstanceMutex;
 
         // Frame element keeps pages in memory if navigated through objects (not URIs).
@@ -43,15 +44,7 @@ namespace MicGate
                 Application.Current.Shutdown();
             }
 
-            // minimizing has more steps than just setting WindowState. Thus use the functions.
-            if (Utility.StrToBool(Utility.ReadSetting("StartWindowMinimized")))
-            {
-                Window_Closing(null, null);
-            }
-            else
-            {
-                TrayIconOpen_Click(null, null);
-            }
+            TrayIconOpen_Click(null, null);
         }
 
         private void UpdateAllButtonStyles(Button activeTab)
@@ -114,6 +107,18 @@ namespace MicGate
             {
                 audioCore.Shutdown();
                 TrayIcon.Dispose();
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // minimizing is surprisingly complicated:
+            // 1) it has more steps than just setting WindowState. Thus use the function.
+            // 2) it cannot be done before the Window has been loaded, otherwise there will be a black box in bottom left of screen
+            if (applicationIsStarting && Utility.StrToBool(Utility.ReadSetting("StartWindowMinimized")))
+            {
+                applicationIsStarting = false;
+                Window_Closing(null, null);
             }
         }
     }
