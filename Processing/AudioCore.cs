@@ -43,11 +43,15 @@ namespace MicGate.Processing
             {
                 realMic.StartRecording();
             }
-            catch (System.Runtime.InteropServices.COMException e)
+            catch (System.Runtime.InteropServices.COMException comEx)
             {
                 // initializing some input devices fails because of e.g. improper sample rate.
                 // if this becomes a problem, something could be done to fix it. low priority as of now.
-                Console.WriteLine($"Real mic initialization failed: {e}");
+                Console.WriteLine($"Real mic initialization failed: {comEx}");
+            }
+            catch (ArgumentException argEx)
+            {
+                Console.WriteLine($"Unsupported wave format, check settings: {argEx}");
             }
 
             // set up our signal chain
