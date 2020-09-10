@@ -26,7 +26,7 @@ The screenshot below shows that small noises (e.g. mouse and mechanical keyboard
 
 1. Pre-requisite: install VB-CABLE (or similar) to pass audio from a virtual speaker to a virtual microphone (https://www.vb-audio.com/Cable/index.htm).
 2. Download, extract and launch MicGate.
-3. Open the settins page (⚙ icon).
+3. Open the settings page (⚙ icon).
 4. Set the real microphone and virtual microphone in the Device settings. Settings are saved automatically.
 5. In the main view (〜 icon), check when the blue line crosses the red line. If it happens too often, increase threshold (Noise gate settings in the settings page). If the blue line never crosses the red threshold when you speak, decrease the threshold.
 
