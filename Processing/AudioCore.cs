@@ -36,7 +36,7 @@ namespace MicGate.Processing
             var mmdMic = mmDevices.FirstOrDefault(x => x.FriendlyName == devicesInput[selectedDeviceNumberInput]);
             realMic = new WasapiCapture(mmdMic);
             realMic.ShareMode = AudioClientShareMode.Shared;
-            realMic.WaveFormat = new WaveFormat();
+            realMic.WaveFormat = mmdMic.AudioClient.MixFormat;
             realMic.DataAvailable += RecorderOnDataAvailable;
             realMic.RecordingStopped += RecorderOnDataEnds;
             try
