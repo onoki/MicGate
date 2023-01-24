@@ -44,7 +44,15 @@ namespace MicGate
                 Application.Current.Shutdown();
             }
 
-            TrayIconOpen_Click(null, null);
+            // minimizing has more steps than just setting WindowState. Thus use the functions.
+            if (Utility.StrToBool(Utility.ReadSetting("StartWindowMinimized")))
+            {
+                Window_Closing(null, null);
+            }
+            else
+            {
+                TrayIconOpen_Click(null, null);
+            }
         }
 
         private void UpdateAllButtonStyles(Button activeTab)
